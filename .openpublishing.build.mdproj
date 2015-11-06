@@ -9,7 +9,7 @@
     <SourceFiles Include="$(RepositoryRoot)\minisize\*.*" />
   </ItemGroup>
 
-  <!-- Build Target -->
+  <!-- Fake Build Target -->
   <Target Name="Build">
     <Copy SourceFiles="@(SourceFiles)" DestinationFolder="$(OutputFolder)\minisize" />
   </Target>
