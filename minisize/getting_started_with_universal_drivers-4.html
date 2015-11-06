@@ -57,7 +57,7 @@
 <p>For more information, see <a href="https://msdn.microsoft.com/en-us/Library/Windows/Hardware/Dn941087">Using a Universal INF File</a>.</p>
 <p>If you want to install your Universal Windows driver on Windows 10 Mobile, you can use an .spkg file. An .spkg (&quot;<em>package file</em>&quot;) is a standalone module that contains your driver package. If you are not deploying to Windows 10 Mobile, you do not need to generate a package file. You can still compile a Universal Windows driver (as defined by the driver source code) without a package file.</p>
 <p>WDK 10 includes PkgGen, a tool that generates package files. You run PkgGen in Visual Studio when you build your driver, using the following procedure.</p>
-<p><img src="common/wedge.gif" alt=""><strong>Using PkgGen to generate a package file</strong></p>
+<p><img src="wedge.gif" alt=""><strong>Using PkgGen to generate a package file</strong></p>
 <ol>
 <li>Right-click the driver project and choose <strong>Add-&gt;New Item</strong>. Next, under <strong>Visual C++-&gt;Windows Driver</strong>, choose <strong>Package Manifest</strong>. Click <strong>Add</strong>.</li>
 <li>Visual Studio adds a file called Package.pkg.xml to your driver project. You can right-click the file and choose properties to verify that the item type is <strong>PkgGen</strong>. (On this same property page, you can set <strong>Excluded from Build</strong> to <strong>Yes</strong> if you decide later that you want to build this driver project and not generate a package file.) Click <strong>OK</strong>.</li>
