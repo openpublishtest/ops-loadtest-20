@@ -8,9 +8,15 @@
   <ItemGroup>
     <SourceFiles Include="$(RepositoryRoot)\minisize\*.*" />
   </ItemGroup>
-
+  
+  <PropertyGroup>
+    <SourceFolder>$(RepositoryRoot)\minisize</SourceFolder>
+    <DestFolder>$(RepositoryRoot)\_site</DestFolder>
+  </PropertyGroup>
+  
   <!-- Fake Build Target -->
   <Target Name="Build">
-    <Copy SourceFiles="@(SourceFiles)" DestinationFolder="$(OutputFolder)\minisize" />
+    <MakeDir Directories="$(DestFolder)" Condition="!Exists($(DestFolder))"/>
+    <Exec Command="robocopy.exe $(SourceFolder) $(DestFolder) /e /is if %errorlevel% leq 4 exit 0 else exit %errorlevel%" />
   </Target>
 </Project>
