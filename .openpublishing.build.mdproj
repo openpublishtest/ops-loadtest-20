@@ -4,19 +4,22 @@
     <OutputFolder Condition="'$(OutputFolder)' == '' ">$(MSBuildThisFileDirectory)_site</OutputFolder>
     <LogOutputFolder Condition="'$(LogOutputFolder)' == ''">$(MSBuildThisFileDirectory)\log\</LogOutputFolder>
   </PropertyGroup>
-
-  <ItemGroup>
-    <SourceFiles Include="$(RepositoryRoot)\minisize\*.*" />
-  </ItemGroup>
   
   <PropertyGroup>
     <SourceFolder>$(RepositoryRoot)\minisize</SourceFolder>
-    <DestFolder>$(RepositoryRoot)\_site</DestFolder>
   </PropertyGroup>
   
   <!-- Fake Build Target -->
-  <Target Name="Build">
-    <MakeDir Directories="$(DestFolder)" Condition="!Exists($(DestFolder))"/>
-    <Exec Command="robocopy.exe $(SourceFolder) $(DestFolder) /e /is if %errorlevel% leq 4 exit 0 else exit %errorlevel%" />
+   <Target Name="Build">
+    <MakeDir Directories="$(OutputFolder)" Condition="!Exists($(OutputFolder))"/>
+    <Exec Command="robocopy.exe $(SourceFolder) $(OutputFolder)
+                   set rce=%errorlevel%
+                   if not %rce%==1 exit %rce% else exit 0" />
   </Target>
+  
+<!--   <Target Name="Build">
+    <MSBuild.ExtensionPack.FileSystem.RoboCopy Source="$(SourceFolder)" Destination="$(OutputFolder)" Files="*.*" Options="/MIR">
+		<Output TaskParameter="ExitCode" PropertyName="Exit" />
+	</MSBuild.ExtensionPack.FileSystem.RoboCopy>
+  </Target> -->
 </Project>
