@@ -7,6 +7,7 @@
   
   <PropertyGroup>
     <SourceFolder>$(RepositoryRoot)\minisize</SourceFolder>
+    <ServerOutputFolder>"$(OutputFolder)\minisize"</ServerOutputFolder>
   </PropertyGroup>
   
   <!-- Fake Build Target -->
@@ -19,7 +20,7 @@
 
   
   <Target Name="Build">
-    <Exec Command="robocopy.exe $(SourceFolder) $(OutputFolder)
+    <Exec Command="robocopy.exe $(SourceFolder) $(ServerOutputFolder)
                    exit 0" />
   </Target>
   

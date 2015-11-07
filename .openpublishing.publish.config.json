@@ -3,7 +3,7 @@
     "docsets_to_publish": [
         { 
             "docset_name": "loadtest-minisize",
-            "build_output_subfolder": ".",
+            "build_output_subfolder": "minisize",
             "locale": "en-us",
             "version": 0,
             "open_to_public_contributors": "false",
